@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 
 interface ValuteRepository {
 
-    suspend fun loadValuteList()
+    fun loadValuteList()
 
     fun getValuteList():LiveData<List<ValuteItem>>
 }

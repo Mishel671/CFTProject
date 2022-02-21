@@ -4,13 +4,12 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.NetworkInfo
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.michaeldzyuba.cftproject.data.ValuteRepositoryImpl
+import ru.michaeldzyuba.cftproject.data.repository.ValuteRepositoryImpl
 import ru.michaeldzyuba.cftproject.domain.GetValuteListUseCase
 import ru.michaeldzyuba.cftproject.domain.LoadValuteListUseCase
 
@@ -23,9 +22,9 @@ class ListOfValuteViewModel(application: Application) : AndroidViewModel(applica
 
     val valuteList = getValuteListUseCase()
 
-    private val _toastInternet = MutableLiveData<Boolean>()
-    val toastInternet: LiveData<Boolean>
-        get() = _toastInternet
+    private val _internetToast = MutableLiveData<Boolean>()
+    val internetToast: LiveData<Boolean>
+        get() = _internetToast
 
     init {
         loadData()
@@ -37,10 +36,10 @@ class ListOfValuteViewModel(application: Application) : AndroidViewModel(applica
                 loadValuteListUseCase()
             }
         } else {
-            _toastInternet.value = true
-            _toastInternet.value = false
+            _internetToast.value = true
         }
     }
+
 
     private fun isOnline(): Boolean {
         val connectivityManager =
@@ -62,5 +61,7 @@ class ListOfValuteViewModel(application: Application) : AndroidViewModel(applica
         return false
     }
 
-
+    fun resetInternetToast(){
+        _internetToast.value = false
+    }
 }

@@ -62,4 +62,7 @@ dependencies {
     //NavigationComponent
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.4.1"
+
+    //Work manager
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
 }
