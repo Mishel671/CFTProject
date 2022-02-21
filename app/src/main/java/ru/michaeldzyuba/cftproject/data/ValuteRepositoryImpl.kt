@@ -18,12 +18,15 @@ class ValuteRepositoryImpl(private val application: Application):ValuteRepositor
     private val mapper = ValuteMapper()
 
     override suspend fun loadValuteList() {
-        val dailyResponseDto = apiService.getValuteList()
-        val valuteListDto = ArrayList<ValuteDto>(dailyResponseDto.valute?.values)
-        val valuteListDbModel = valuteListDto.map{
-            mapper.mapDtoToDbModel(it)
+        try {
+            val dailyResponseDto = apiService.getValuteList()
+            val valuteListDto = ArrayList<ValuteDto>(dailyResponseDto.valute?.values)
+            val valuteListDbModel = valuteListDto.map{
+                mapper.mapDtoToDbModel(it)
+            }
+            valuteDao.insertValuteList(valuteListDbModel)
+        } catch (e: Exception){
         }
-        valuteDao.insertValuteList(valuteListDbModel)
     }
 
 

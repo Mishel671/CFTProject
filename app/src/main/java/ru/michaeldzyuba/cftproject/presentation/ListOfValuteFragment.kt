@@ -61,12 +61,14 @@ class ListOfValuteFragment : Fragment() {
 
     private fun checkInternet() {
         viewModel.toastInternet.observe(viewLifecycleOwner) {
-            Toast.makeText(
-                context,
-                getString(R.string.connect_internet),
-                Toast.LENGTH_SHORT
-            ).show()
-            binding.refreshLayout.isRefreshing = false
+            if(it){
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.connect_internet),
+                    Toast.LENGTH_SHORT
+                ).show()
+                binding.refreshLayout.isRefreshing = false
+            }
         }
     }
 }

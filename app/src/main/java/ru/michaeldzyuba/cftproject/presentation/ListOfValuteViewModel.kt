@@ -23,8 +23,8 @@ class ListOfValuteViewModel(application: Application) : AndroidViewModel(applica
 
     val valuteList = getValuteListUseCase()
 
-    private val _toastInternet = MutableLiveData<Unit>()
-    val toastInternet: LiveData<Unit>
+    private val _toastInternet = MutableLiveData<Boolean>()
+    val toastInternet: LiveData<Boolean>
         get() = _toastInternet
 
     init {
@@ -37,7 +37,8 @@ class ListOfValuteViewModel(application: Application) : AndroidViewModel(applica
                 loadValuteListUseCase()
             }
         } else {
-            _toastInternet.value = Unit
+            _toastInternet.value = true
+            _toastInternet.value = false
         }
     }
 
