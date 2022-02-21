@@ -1,7 +1,8 @@
-package ru.michaeldzyuba.cftproject
+package ru.michaeldzyuba.cftproject.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.michaeldzyuba.cftproject.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

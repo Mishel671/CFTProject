@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CFTProject</string>
+    <string name="valuteName">%s (%s)</string>
+    <string name="valute_value">Стоимость валюты: %s</string>
+    <string name="valute_nominal">Номинал валюты: %s</string>
+    <string name="click_to_convert">Нажмите, чтобы конвертировать</string>
 </resources>
