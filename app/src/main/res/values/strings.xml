@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">CFTProject</string>
     <string name="valuteName">%s (%s)</string>
-    <string name="valute_value">Стоимость валюты: %s</string>
+    <string name="valute_value">Стоимость валюты: %.2fр.</string>
     <string name="valute_nominal">Номинал валюты: %s</string>
     <string name="click_to_convert">Нажмите, чтобы конвертировать</string>
+    <string name="input_sum">Укажите сумму</string>
+    <string name="button_count_text">Подсчитать</string>
+    <string name="error_input_value">Введите число</string>
+    <string name="connect_internet">Пожалуйста, проверьте подключение к интернету и обновите.</string>
 </resources>

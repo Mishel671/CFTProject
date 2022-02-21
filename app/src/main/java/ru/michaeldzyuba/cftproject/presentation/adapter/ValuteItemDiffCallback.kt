@@ -5,7 +5,7 @@ import ru.michaeldzyuba.cftproject.domain.ValuteItem
 
 object ValuteItemDiffCallback: DiffUtil.ItemCallback<ValuteItem>() {
     override fun areItemsTheSame(oldItem: ValuteItem, newItem: ValuteItem): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.uid == newItem.uid
     }
 
     override fun areContentsTheSame(oldItem: ValuteItem, newItem: ValuteItem): Boolean {

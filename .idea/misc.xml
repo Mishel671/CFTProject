@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/drawable/button_count_background.xml" value="0.2703125" />
         <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/drawable/ic_convert.xml" value="0.2703125" />
+        <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/drawable/text_input_layout_color.xml" value="0.2703125" />
         <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/layout/currency_item_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/layout/fragment_convert_valute.xml" value="0.264" />
         <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/layout/fragment_list_of_currencies.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/layout/fragment_list_of_valute.xml" value="0.264" />
         <entry key="..\:/Users/su/AndroidStudioProjects/CFTProject/app/src/main/res/layout/valute_item_layout.xml" value="0.264" />

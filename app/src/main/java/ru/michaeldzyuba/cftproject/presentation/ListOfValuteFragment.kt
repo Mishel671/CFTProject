@@ -1,12 +1,17 @@
 package ru.michaeldzyuba.cftproject.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import ru.michaeldzyuba.cftproject.R
 import ru.michaeldzyuba.cftproject.databinding.FragmentListOfValuteBinding
+import ru.michaeldzyuba.cftproject.domain.ValuteItem
 import ru.michaeldzyuba.cftproject.presentation.adapter.ValuteListAdapter
 
 
@@ -31,13 +36,37 @@ class ListOfValuteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
+        checkInternet()
     }
 
-    private fun setRecyclerView(){
+    private fun setRecyclerView() {
         val adapter = ValuteListAdapter(requireActivity())
         binding.recyclerView.adapter = adapter
-        viewModel.valuteList.observe(viewLifecycleOwner){
+        viewModel.valuteList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+            binding.refreshLayout.isRefreshing = false
+        }
+        adapter.onValuteClickListener = object : ValuteListAdapter.OnValuteClickListener {
+            override fun onValuteClick(valuteItem: ValuteItem) {
+                findNavController().navigate(
+                    ListOfValuteFragmentDirections
+                        .actionListOfCurrenciesFragmentToConvertValuteFragment(valuteItem)
+                )
+            }
+        }
+        binding.refreshLayout.setOnRefreshListener {
+            viewModel.loadData()
+        }
+    }
+
+    private fun checkInternet() {
+        viewModel.toastInternet.observe(viewLifecycleOwner) {
+            Toast.makeText(
+                context,
+                getString(R.string.connect_internet),
+                Toast.LENGTH_SHORT
+            ).show()
+            binding.refreshLayout.isRefreshing = false
         }
     }
 }

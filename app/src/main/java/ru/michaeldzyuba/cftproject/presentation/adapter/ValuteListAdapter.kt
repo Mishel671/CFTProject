@@ -12,6 +12,8 @@ class ValuteListAdapter(
     private val context: Context
 ) : ListAdapter<ValuteItem, ValuteItemViewHolder>(ValuteItemDiffCallback) {
 
+    var onValuteClickListener: OnValuteClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ValuteItemViewHolder {
         val binding = ValuteItemLayoutBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -33,7 +35,15 @@ class ValuteListAdapter(
                 valuteName.text = String.format(titleText, name, charCode)
                 valuteValue.text = String.format(costText, value)
                 valuteNominal.text = String.format(nominalText, nominal)
+
+                binding.buttonConvert.setOnClickListener {
+                    onValuteClickListener?.onValuteClick(this)
+                }
             }
         }
+    }
+
+    interface OnValuteClickListener{
+        fun onValuteClick(valuteItem: ValuteItem)
     }
 }

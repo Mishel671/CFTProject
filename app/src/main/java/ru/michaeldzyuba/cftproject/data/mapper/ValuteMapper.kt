@@ -15,7 +15,6 @@ class ValuteMapper {
     )
 
     fun mapDbToEntity(db: ValuteDbModel) = ValuteItem(
-        id = db.id,
         uid = db.uid,
         charCode = db.charCode,
         nominal = db.nominal,

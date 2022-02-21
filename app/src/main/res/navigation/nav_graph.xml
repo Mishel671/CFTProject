@@ -9,5 +9,22 @@
         android:id="@+id/listOfCurrenciesFragment"
         android:name="ru.michaeldzyuba.cftproject.presentation.ListOfValuteFragment"
         android:label="fragment_list_of_currencies"
-        tools:layout="@layout/fragment_list_of_valute" />
+        tools:layout="@layout/fragment_list_of_valute" >
+        <action
+            android:id="@+id/action_listOfCurrenciesFragment_to_convertValuteFragment"
+            app:destination="@id/convertValuteFragment"
+            app:enterAnim="@anim/slide_enter_left"
+            app:exitAnim="@anim/slide_exit_left"
+            app:popEnterAnim="@anim/slide_enter_right"
+            app:popExitAnim="@anim/slide_exit_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/convertValuteFragment"
+        android:name="ru.michaeldzyuba.cftproject.presentation.ConvertValuteFragment"
+        android:label="fragment_convert_valute"
+        tools:layout="@layout/fragment_convert_valute" >
+        <argument
+            android:name="valute"
+            app:argType="ru.michaeldzyuba.cftproject.domain.ValuteItem" />
+    </fragment>
 </navigation>

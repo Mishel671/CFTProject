@@ -8,7 +8,7 @@ import androidx.room.Query
 
 @Dao
 interface ValuteDao {
-    @Query("SELECT * FROM valute_list ORDER BY id")
+    @Query("SELECT * FROM valute_list ORDER BY uid")
     fun getValuteList(): LiveData<List<ValuteDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
