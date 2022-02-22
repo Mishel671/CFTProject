@@ -28,9 +28,7 @@ class ListOfValuteViewModel @Inject constructor(
 
     fun loadData() {
         if (isOnline()) {
-            viewModelScope.launch {
-                loadValuteListUseCase()
-            }
+            loadValuteListUseCase()
         } else {
             _internetToast.value = true
         }
@@ -57,7 +55,7 @@ class ListOfValuteViewModel @Inject constructor(
         return false
     }
 
-    fun resetInternetToast(){
+    fun resetInternetToast() {
         _internetToast.value = false
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import ru.michaeldzyuba.cftproject.R
 import ru.michaeldzyuba.cftproject.ValuteApp
 import ru.michaeldzyuba.cftproject.databinding.FragmentConvertValuteBinding
+import java.util.*
 import javax.inject.Inject
 
 
@@ -62,8 +64,8 @@ class ConvertValuteFragment : Fragment() {
         with(binding) {
             with(valuteItem) {
                 valuteName.text = String.format(title, name, charCode)
-                valuteValue.text = String.format(valuteCost, value)
-                editTextValute.setText(String.format("%.2f", value))
+                valuteValue.text = String.format(Locale.US,valuteCost, value)
+                editTextValute.setText(String.format(Locale.US,"%.2f", value))
                 convertValute()
             }
         }
@@ -89,7 +91,7 @@ class ConvertValuteFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.resultValute.observe(viewLifecycleOwner) {
-            binding.valuteResult.text = String.format("%.2f %s", it, args.valute.charCode)
+            binding.valuteResult.text = String.format(Locale.US,"%.2f %s", it, args.valute.charCode)
         }
         viewModel.errorInputRubles.observe(viewLifecycleOwner) {
             val message = if (it) {
