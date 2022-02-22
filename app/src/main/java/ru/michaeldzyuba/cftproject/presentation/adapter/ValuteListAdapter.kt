@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import ru.michaeldzyuba.cftproject.R
 import ru.michaeldzyuba.cftproject.databinding.ValuteItemLayoutBinding
 import ru.michaeldzyuba.cftproject.domain.ValuteItem
+import java.util.*
 
 class ValuteListAdapter(
     private val context: Context
@@ -33,7 +34,7 @@ class ValuteListAdapter(
                 val nominalText = context.resources.getString(R.string.valute_nominal)
 
                 valuteName.text = String.format(titleText, name, charCode)
-                valuteValue.text = String.format(costText, value)
+                valuteValue.text = String.format(Locale.US,costText, value)
                 valuteNominal.text = String.format(nominalText, nominal)
 
                 binding.buttonConvert.setOnClickListener {
