@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="valute_text_name_color">#283241</color>
+    <color name="valute_text_description_color">#38465A</color>
+    <color name="convert_icon_color">#DB646E</color>
+    <color name="enable_stroke_color">#324061</color>
+    <color name="disable_stroke_color">#B4B4B4</color>
+    <color name="error_color">#CE5870</color>
+    <color name="edit_text_input_color">#324061</color>
+    <color name="cursor_color">#324061</color>
+    <color name="button_count_color">#4CAF50</color>
 </resources>
