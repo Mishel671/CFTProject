@@ -4,21 +4,17 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import ru.michaeldzyuba.cftproject.data.repository.ValuteRepositoryImpl
 import ru.michaeldzyuba.cftproject.domain.GetValuteListUseCase
 import ru.michaeldzyuba.cftproject.domain.LoadValuteListUseCase
+import javax.inject.Inject
 
-class ListOfValuteViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository = ValuteRepositoryImpl(application)
-
-    private val loadValuteListUseCase = LoadValuteListUseCase(repository)
-    private val getValuteListUseCase = GetValuteListUseCase(repository)
+class ListOfValuteViewModel @Inject constructor(
+    private val getValuteListUseCase: GetValuteListUseCase,
+    private val loadValuteListUseCase: LoadValuteListUseCase,
+    private val application: Application
+) : ViewModel() {
 
     val valuteList = getValuteListUseCase()
 
@@ -43,7 +39,7 @@ class ListOfValuteViewModel(application: Application) : AndroidViewModel(applica
 
     private fun isOnline(): Boolean {
         val connectivityManager =
-            getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (connectivityManager != null) {
             val capabilities =
                 connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)

@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.michaeldzyuba.cftproject.domain.ValuteItem
+import javax.inject.Inject
 
-class ConvertValuteViewModel : ViewModel() {
+class ConvertValuteViewModel @Inject constructor() : ViewModel() {
 
     private val _errorInputRubles = MutableLiveData<Boolean>()
     val errorInputRubles: LiveData<Boolean>
@@ -19,7 +20,7 @@ class ConvertValuteViewModel : ViewModel() {
         val rubles = parseValue(inputValue)
         val fieldValid = validateInput(rubles)
         if (fieldValid) {
-            _resultValute.value = rubles/valuteCost
+            _resultValute.value = rubles / valuteCost
         }
     }
 

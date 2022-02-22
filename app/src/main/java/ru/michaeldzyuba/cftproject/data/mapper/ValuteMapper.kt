@@ -3,8 +3,9 @@ package ru.michaeldzyuba.cftproject.data.mapper
 import ru.michaeldzyuba.cftproject.data.database.ValuteDbModel
 import ru.michaeldzyuba.cftproject.data.network.model.ValuteDto
 import ru.michaeldzyuba.cftproject.domain.ValuteItem
+import javax.inject.Inject
 
-class ValuteMapper {
+class ValuteMapper @Inject constructor(){
 
     fun mapDtoToDbModel(dto: ValuteDto) = ValuteDbModel(
         uid = dto.idValute,

@@ -1,5 +1,6 @@
 package ru.michaeldzyuba.cftproject.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,7 +11,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import ru.michaeldzyuba.cftproject.R
+import ru.michaeldzyuba.cftproject.ValuteApp
 import ru.michaeldzyuba.cftproject.databinding.FragmentConvertValuteBinding
+import javax.inject.Inject
 
 
 class ConvertValuteFragment : Fragment() {
@@ -21,8 +24,20 @@ class ConvertValuteFragment : Fragment() {
     private val binding: FragmentConvertValuteBinding
         get() = _binding ?: throw RuntimeException("FragmentConvertValuteBinding == null")
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val component by lazy {
+        (requireActivity().application as ValuteApp).component
+    }
+
     private val viewModel by lazy {
-        ViewModelProvider(this)[ConvertValuteViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[ConvertValuteViewModel::class.java]
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
     }
 
     override fun onCreateView(

@@ -1,6 +1,10 @@
 package ru.michaeldzyuba.cftproject.domain
 
-class GetValuteListUseCase(private val repository: ValuteRepository) {
+import javax.inject.Inject
+
+class GetValuteListUseCase @Inject constructor(
+    private val repository: ValuteRepository
+) {
 
     operator fun invoke() = repository.getValuteList()
 }

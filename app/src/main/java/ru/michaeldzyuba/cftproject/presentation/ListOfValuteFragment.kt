@@ -1,5 +1,6 @@
 package ru.michaeldzyuba.cftproject.presentation
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,9 +10,11 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ru.michaeldzyuba.cftproject.R
+import ru.michaeldzyuba.cftproject.ValuteApp
 import ru.michaeldzyuba.cftproject.databinding.FragmentListOfValuteBinding
 import ru.michaeldzyuba.cftproject.domain.ValuteItem
 import ru.michaeldzyuba.cftproject.presentation.adapter.ValuteListAdapter
+import javax.inject.Inject
 
 
 class ListOfValuteFragment : Fragment() {
@@ -20,8 +23,20 @@ class ListOfValuteFragment : Fragment() {
     private val binding: FragmentListOfValuteBinding
         get() = _binding ?: throw RuntimeException("FragmentListOfValuteBinding == null")
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val component by lazy {
+        (requireActivity().application as ValuteApp).component
+    }
+
     private val viewModel by lazy {
-        ViewModelProvider(this)[ListOfValuteViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[ListOfValuteViewModel::class.java]
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        component.inject(this)
     }
 
     override fun onCreateView(
@@ -60,7 +75,7 @@ class ListOfValuteFragment : Fragment() {
 
     private fun checkInternet() {
         viewModel.internetToast.observe(viewLifecycleOwner) {
-            if(it){
+            if (it) {
                 Toast.makeText(
                     requireActivity(),
                     getString(R.string.connect_internet),
